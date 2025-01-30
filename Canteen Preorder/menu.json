@@ -1,0 +1,28 @@
+{
+    "Chinese": [
+      { "id": 1, "name": "Chow Mein", "price": 150 },
+      { "id": 2, "name": "Fried Rice", "price": 120 },
+      { "id": 3, "name": "Spring Rolls", "price": 50 }
+    ],
+    "Indian": [
+      { "id": 4, "name": "Butter Chicken", "price": 180 },
+      { "id": 5, "name": "Paneer Tikka", "price": 140 },
+      { "id": 6, "name": "Biryani", "price": 200 }
+    ],
+    "Italian": [
+      { "id": 7, "name": "Pizza Margherita", "price": 250 },
+      { "id": 8, "name": "Pasta Alfredo", "price": 220 },
+      { "id": 9, "name": "Lasagna", "price": 300 }
+    ],
+    "Punjabi": [
+      { "id": 10, "name": "Amritsari Kulcha", "price": 80 },
+      { "id": 11, "name": "Sarson Da Saag", "price": 100 },
+      { "id": 12, "name": "Makki Di Roti", "price": 60 }
+    ],
+    "Mexican": [
+      { "id": 13, "name": "Tacos", "price": 120 },
+      { "id": 14, "name": "Burritos", "price": 150 },
+      { "id": 15, "name": "Quesadillas", "price": 130 }
+    ]
+  }
+  
