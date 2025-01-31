@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            background: rgba(209, 243, 255, 1);
+            /* light blue */
+            font-family: Arial, sans-serif;
+            color: rgba(42, 42, 42, 1);
+            /* black */
+            /* margin: 0; */
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgba(42, 42, 42, 1);
+            /* black */
+            margin-top: 20px;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(42, 42, 42, 1);
+            /* black */
+        }
+
+        th {
+            background-color: rgba(254, 63, 64, 1);
+            /* red */
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.05);
+            /* light gray background for even rows */
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+            /* white for odd rows */
+        }
+
+        a {
+            color: rgba(42, 42, 42, 1);
+            /* black */
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: rgba(254, 63, 64, 1);
+            /* red */
+        }
+
+        .order-toggle {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .order-toggle h3 {
+            color: rgba(42, 42, 42, 1);
+            /* black */
+        }
+
+        .order-toggle span {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-danger {
+            background-color: rgba(254, 63, 64, 1);
+            /* red */
+            color: white;
+        }
+
+        .btn-success {
+            background-color: rgba(42, 42, 42, 1);
+            /* black */
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        a.logout {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: rgba(42, 42, 42, 1);
+            /* black */
+        }
+
+        a.logout:hover {
+            color: rgba(254, 63, 64, 1);
+            /* red */
+        }
+
+        .out {
+            font-size: 20px;
+            border: 2px solid black;
+            color: white;
+            background-color: rgba(254, 63, 64, 1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-left: 90%;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <a href="{{ url_for('logout') }}" class="out">Logout</a>
+    <h1>Admin Dashboard</h1>
+   
+    <table border="1">
+        <tr>
+            <th>Order ID</th>
+            <th>Student ID</th>
+            <th>Xerox Type</th>
+            <th>Number of Copies</th>
+            <th>Total Amount</th>
+            <th>Document</th>
+            <th>Status</th>
+            <th>Time</th>
+            <th>Action</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.student_id }}</td>
+            <td>{{ order.xerox_type }}</td>
+            <td>{{ order.num_copies }}</td>
+            <td>₹{{ order.total }}</td>
+            <td>
+                {% if order.document %}
+                <a href="{{ url_for('uploaded_file', filename=order.document) }}" target="_blank">View Document</a>
+                {% else %}
+                No document uploaded
+                {% endif %}
+            </td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.time }}</td>
+            <td><a href="{{ url_for('mark_ready', order_id=order.id) }}">Mark Ready</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <!-- Add somewhere in the dashboard -->
+    <div class="order-toggle">
+        <h3>Order Status:
+            <span style="color: {{ 'green' if settings.accepting_orders else 'red' }}">
+                {{ "ACCEPTING ORDERS" if settings.accepting_orders else "PAUSED" }}
+            </span>
+        </h3>
+        <form action="{{ url_for('toggle_orders') }}" method="post">
+            <button type="submit" class="btn {{ 'btn-danger' if settings.accepting_orders else 'btn-success' }}">
+                {{ "Pause Orders" if settings.accepting_orders else "Resume Orders" }}
+            </button>
+        </form>
+    </div>
+
+    
+</body>
+
+</html>

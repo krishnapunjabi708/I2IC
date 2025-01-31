@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Crowd Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+    <div class="inora">Crowd Prediction</div>
+    <div class="sh">Canteen Crowd Prediction and Reccomendation</div>
+    
+    <form method="POST" class="form-container">
+        <label for="day" class="label">Select Day:</label>
+        <select name="day" id="day" class="dropdown">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+        </select>
+    
+        <label for="time_slot" class="label">Select Time Slot:</label>
+        <select name="time_slot" id="time_slot" class="dropdown">
+            {% for slot in time_slots.values() %}
+            <option>{{ slot }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="submit-button">Predict</button>
+    </form>
+    
+
+    {% if predictions %}
+    <div class="pf">Predictions and Free Spaces</div>
+    <ul class="ul">
+        {% for canteen_name, predicted_crowd in predictions.items() %}
+        <li class="li">
+            {{ canteen_name }}: Predicted crowd = {{ predicted_crowd|int }}, Free space = {{
+            free_spaces[canteen_name]|int }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="pf">Recommendations</div>
+    <ul class="ul">
+        {% for i, (canteen_name, free_space) in enumerate(ranked_canteens) %}
+        <li class="li">
+            {{ i + 1 }}. {{ canteen_name }} has {{ free_space|int }} free seats available.
+        </li>
+        {% endfor %}
+    </ul>
+
+
+    <!-- <h2>Overall Statistics</h2>
+    <p>Total capacity of all canteens: {{ total_capacity }}</p>
+    <p>Total predicted crowd across all canteens: {{ total_predicted_crowd|int }}</p> -->
+    {% endif %}
+</body>
+
+</html>

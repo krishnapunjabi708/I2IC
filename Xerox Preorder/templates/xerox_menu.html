@@ -1,0 +1,215 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xerox Pre-Order</title>
+</head>
+
+<body>
+    <h1>Xerox Pre-Order</h1>
+    {% if notification %}
+    <div style="color: green; margin-bottom: 20px;">{{ notification }}</div>
+    {% endif %}
+
+    <a href="{{ url_for('check_status') }}">
+        <button>Check Order Status</button>
+    </a>
+    <form action="{{ url_for('place_order') }}" method="POST" enctype="multipart/form-data">
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id" required><br><br>
+
+        <label for="xerox_type">Xerox Type:</label>
+        <select id="xerox_type" name="xerox_type" required>
+            {% for option in xerox_options %}
+            <option value="{{ option.type }}">{{ option.type }} - ₹{{ option.price }} per copy</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="num_copies">Number of Copies:</label>
+        <input type="number" id="num_copies" name="num_copies" min="1" value="1" required><br><br>
+
+        <label for="document">Upload Document:</label>
+        <input type="file" id="document" name="document" accept=".pdf,.doc,.docx" required><br><br>
+
+        <button type="submit">Place Order</button>
+
+
+        <a href="{{ url_for('check_status') }}">
+            <button>Check Order Status</button>
+        </a>
+
+
+    </form>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xerox Pre-Order</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: rgba(209, 243, 255, 1);
+            /* Light Blue Background */
+            color: rgba(42, 42, 42, 1);
+            /* Black Text */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: rgba(254, 63, 64, 1);
+            margin-bottom: 20px;
+            font-size: 50px;
+            font-weight: 700;
+        }
+
+        /* Notification Style */
+        .notification {
+            color: rgba(254, 63, 64, 1);
+            /* Red Notification Text */
+            background: rgba(255, 255, 255, 0.9);
+            /* White Background with Transparency */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form Container */
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+            /* Dark Blue Shadow */
+            width: 100%;
+            max-width: 400px;
+            margin: 10px;
+        }
+
+        /* Form Labels */
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: rgba(42, 42, 42, 1);
+            /* Black Text */
+        }
+
+        /* Form Inputs */
+        input[type="text"],
+        input[type="number"],
+        select,
+        input[type="file"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            /* Dark Blue Border */
+            border-radius: 5px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.9);
+            /* White Background with Transparency */
+        }
+
+        /* Buttons */
+        button {
+            background: rgba(254, 63, 64, 1);
+            /* Red Button Background */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(200, 50, 50, 1);
+            /* Darker Red on Hover */
+        }
+
+        /* Link Buttons */
+        a button {
+            background: rgba(42, 42, 42, 1);
+            /* Black Button Background */
+            color: white;
+            margin: 25px;
+            font-size: 20px;
+            box-shadow: 3px 2px 5px black;
+            transition: 0.7s all;
+
+            &:hover{
+                
+                color: rgba(254, 63, 64, 1);
+                transform: scale(1.02);
+            }
+        }
+
+        a button:hover {
+            background: rgba(30, 30, 30, 1);
+            /* Darker Black on Hover */
+        }
+
+        /* File Input Customization */
+        input[type="file"] {
+            padding: 8px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            form {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Xerox Pre-Order</h1>
+    {% if notification %}
+    <div class="notification">{{ notification }}</div>
+    {% endif %}
+
+    <a href="{{ url_for('check_status') }}">
+        <button>Check Order Status</button>
+    </a>
+    <form action="{{ url_for('place_order') }}" method="POST" enctype="multipart/form-data">
+        <label for="student_id">Student ID:</label>
+        <input type="text" id="student_id" name="student_id" required><br><br>
+
+        <label for="xerox_type">Xerox Type:</label>
+        <select id="xerox_type" name="xerox_type" required>
+            {% for option in xerox_options %}
+            <option value="{{ option.type }}">{{ option.type }} - ₹{{ option.price }} per copy</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="num_copies">Number of Copies:</label>
+        <input type="number" id="num_copies" name="num_copies" min="1" value="1" required><br><br>
+
+        <label for="document">Upload Document:</label>
+        <input type="file" id="document" name="document" accept=".pdf,.doc,.docx" required><br><br>
+
+        <button type="submit">Place Order</button>
+    </form>
+</body

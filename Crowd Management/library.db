@@ -1,0 +1,30 @@
+import sqlite3
+
+# Connect to the SQLite database (or create it if it doesn't exist)
+conn = sqlite3.connect('library.db')
+cursor = conn.cursor()
+
+# Create the resources table
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS resources (
+    resource_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    resource_type TEXT CHECK(resource_type IN ('PYQ', 'Notes', 'Timetable')),
+    branch TEXT,
+    semester INTEGER,
+    file_name TEXT,
+    file_path TEXT
+)
+''')
+
+# Insert sample data
+cursor.execute('''
+INSERT INTO resources (resource_type, branch, semester, file_name, file_path)
+VALUES 
+    ('PYQ', 'CSE', 1, 'pyq_2022.pdf', 'resources/CSE/Semester 1/PYQs/pyq_2022.pdf'),
+    ('Notes', 'CSE', 1, 'notes_unit1.pdf', 'resources/CSE/Semester 1/Notes/notes_unit1.pdf'),
+    ('Timetable', 'CSE', 1, 'timetable_2023.pdf', 'resources/CSE/Semester 1/Timetable/timetable_2023.pdf')
+''')
+
+# Commit changes and close the connection
+conn.commit()
+conn.close()

@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #e0fbfc;
+}
+
+
+.inora{
+    font-size: 55px;
+    font-weight: 700;
+    color: #fe3f3f;
+    text-align: center;
+    margin-top: 24px;
+}
+.sh{
+    color: black;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 36px 0;
+    text-align: center;
+}
+.day{
+    color: #149dec;
+}
+.time{
+    color: #149dec;
+}
+
+/* General styles for the form */
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Style for labels */
+.label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #149dec;
+    margin-bottom: 5px;
+}
+
+/* Style for dropdowns */
+.dropdown {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.dropdown:focus {
+    border-color: #007bff;
+}
+
+/* Add margin between label and dropdown */
+.label + .dropdown {
+    margin-top: 5px;
+}
+
+/* Button styling */
+.submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+/* Section heading style */
+.section-heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* List styles */
+.predictions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Each prediction item */
+.prediction-item {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for each item */
+.prediction-item:hover {
+    background-color: #e7f0ff;
+    transform: translateY(-2px);
+}
+
+/* Styles for specific elements in each prediction item */
+.canteen-name {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.predicted-crowd,
+.free-space {
+    font-weight: bold;
+    color: #28a745; /* Green for better contrast */
+}
+/* Section heading style */
+.pf {
+    color: #222;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 77px 0 20px 0;
+    text-align: center;
+    /* text-transform: uppercase; */
+    letter-spacing: 1.5px;
+    /* border-bottom: 3px solid #007bff; */
+    /* display: inline-block; */
+    text-align: center;
+}
+
+/* List container style */
+.ul {
+    color: #555; /* Medium gray for better readability */
+    font-size: 18px; /* Slightly smaller than the heading */
+    font-weight: 500; /* Medium font weight */
+    margin: 20px auto; /* Centers the list and adds spacing */
+    text-align: left; /* Aligns text to the left for a cleaner look */
+    width: 80%; /* Restricts the width of the list */
+    padding: 0; /* Removes default list padding */
+    list-style-type: none; /* Removes bullet points */
+}
+
+/* Individual list item style */
+.li {
+    background-color: #f9f9f9; /* Light background for contrast */
+    border: 1px solid #ddd; /* Thin border for structure */
+    border-radius: 10px; /* Rounded corners */
+    padding: 12px 20px; /* Internal spacing */
+    margin: 15px 0; /* Spacing between items */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover effect for list items */
+.li:hover {
+    background-color: #e6f0ff; /* Light blue background on hover */
+    border-color: #007bff; /* Highlight border on hover */
+    transform: scale(1.02); /* Slightly enlarges the item on hover */
+}
+
+/* Highlighting specific parts of the content */
+.li span {
+    font-weight: bold; /* Makes key information stand out */
+    color: #007bff; /* Adds a pop of blue to highlighted text */
+}

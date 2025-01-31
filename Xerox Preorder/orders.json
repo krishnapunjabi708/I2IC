@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1738254363.48927",
+    "student_id": "22310420",
+    "xerox_type": "black_white",
+    "num_copies": 1,
+    "total": 5,
+    "status": "ready",
+    "time": "2025-01-30 21:56:03",
+    "document": "22310420_1738254363.459304_Assignment 1_psp.docx"
+  },
+  {
+    "id": "1738254452.272269",
+    "student_id": "22310420",
+    "xerox_type": "color",
+    "num_copies": 1,
+    "total": 10,
+    "status": "ready",
+    "time": "2025-01-30 21:57:32",
+    "document": "22310420_1738254452.26658_Assignment 1_psp.docx"
+  },
+  {
+    "id": "1738255551.148092",
+    "student_id": "22310420",
+    "xerox_type": "color",
+    "num_copies": 1,
+    "total": 10,
+    "status": "ready",
+    "time": "2025-01-30 22:15:51",
+    "document": "22310420_1738255551.138758_Assignment 1_psp.docx"
+  }
+]
